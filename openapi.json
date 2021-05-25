@@ -1,0 +1,288 @@
+{
+   "openapi": "3.0.3",
+   "info": {
+      "title": "Generated API",
+      "version": "1.0"
+   },
+   "paths": {
+      "/item": {
+         "get": {
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/Item"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "put": {
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/Item"
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Item"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "post": {
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/Item"
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "201": {
+                  "description": "Created"
+               }
+            }
+         }
+      },
+      "/item/{idsString}": {
+         "delete": {
+            "parameters": [
+               {
+                  "name": "idsString",
+                  "in": "path",
+                  "required": true,
+                  "schema": {
+                     "type": "string"
+                  }
+               }
+            ],
+            "responses": {
+               "204": {
+                  "description": "No Content"
+               }
+            }
+         }
+      },
+      "/item/{userId}": {
+         "get": {
+            "parameters": [
+               {
+                  "name": "userId",
+                  "in": "path",
+                  "required": true,
+                  "schema": {
+                     "$ref": "#/components/schemas/UUID"
+                  }
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/Item"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/itemType": {
+         "get": {
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/ItemType"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "post": {
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/ItemType"
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "201": {
+                  "description": "Created"
+               }
+            }
+         }
+      },
+      "/loan-item": {
+         "get": {
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/LoanItem"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "put": {
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/LoanItem"
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/LoanItem"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "post": {
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/LoanItem"
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "201": {
+                  "description": "Created"
+               }
+            }
+         }
+      },
+      "/loan-item/{id}": {
+         "delete": {
+            "parameters": [
+               {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "schema": {
+                     "$ref": "#/components/schemas/UUID"
+                  }
+               }
+            ],
+            "responses": {
+               "204": {
+                  "description": "No Content"
+               }
+            }
+         }
+      }
+   },
+   "components": {
+      "schemas": {
+         "Item": {
+            "type": "object",
+            "properties": {
+               "brand": {
+                  "type": "string"
+               },
+               "description": {
+                  "type": "string"
+               },
+               "id": {
+                  "$ref": "#/components/schemas/UUID"
+               },
+               "itemType": {
+                  "$ref": "#/components/schemas/ItemType"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "serialNumber": {
+                  "type": "string"
+               }
+            }
+         },
+         "ItemType": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "$ref": "#/components/schemas/UUID"
+               },
+               "name": {
+                  "type": "string"
+               }
+            }
+         },
+         "LoanItem": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "$ref": "#/components/schemas/UUID"
+               },
+               "item": {
+                  "$ref": "#/components/schemas/Item"
+               },
+               "startDate": {
+                  "format": "date",
+                  "type": "string"
+               },
+               "userId": {
+                  "$ref": "#/components/schemas/UUID"
+               }
+            }
+         },
+         "UUID": {
+            "format": "uuid",
+            "pattern": "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+            "type": "string"
+         }
+      }
+   }
+}
